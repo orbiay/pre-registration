@@ -133,12 +133,39 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<version>${io.micrometer.prometheus.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-transliteration-icu4j -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-transliteration-icu4j</artifactId>
+			<version>1.1.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-ref-idobjectvalidator -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-ref-idobjectvalidator</artifactId>
+			<version>1.1.5.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-virusscanner-clamav -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-virusscanner-clamav</artifactId>
+			<version>1.1.5.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
 				<configuration>
 					<layout>ZIP</layout>
 					<executable>true</executable>

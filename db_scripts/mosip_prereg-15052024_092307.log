@@ -1,0 +1,242 @@
+05/15/2024 09:23:07 : Postgres database server and service is up and running
+05/15/2024 09:23:07 : Started sourcing the mosip_prereg Database scripts
+05/15/2024 09:23:07 : Database scripts are sourcing from :/home/oussama/.m2/repository/pre-registration/db_scripts/
+05/15/2024 09:23:07 : Database deployment on mosip_prereg database is started....
+05/15/2024 09:23:07 : Checking for existing users.... Count of existing users: 0
+05/15/2024 09:23:07 : Creating database users
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE
+05/15/2024 09:23:07 : Active connections exist on the database server and active connection will be terminated for DB deployment.
+05/15/2024 09:23:07 : Prereg user already exist
+psql:mosip_prereg_db.sql:1: NOTICE:  database "mosip_prereg" does not exist, skipping
+DROP DATABASE
+CREATE DATABASE
+COMMENT
+You are now connected to database "mosip_prereg" as user "sysadmin".
+psql:mosip_prereg_db.sql:16: NOTICE:  schema "prereg" does not exist, skipping
+DROP SCHEMA
+CREATE SCHEMA
+ALTER SCHEMA
+ALTER DATABASE
+You are now connected to database "mosip_prereg" as user "sysadmin".
+GRANT
+GRANT
+psql:mosip_prereg_grants.sql:18: ERROR:  role "prereguser" does not exist
+GRANT
+psql:mosip_prereg_grants.sql:30: ERROR:  role "prereguser" does not exist
+psql:mosip_prereg_grants.sql:36: ERROR:  role "prereguser" does not exist
+psql:mosip_prereg_grants.sql:40: ERROR:  role "prereguser" does not exist
+GRANT
+You are now connected to database "mosip_prereg" as user "sysadmin".
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+CREATE INDEX
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+CREATE INDEX
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+CREATE SEQUENCE
+psql:ddl/prereg-batch-fk.sql:35: ERROR:  role "prereguser" does not exist
+05/15/2024 09:23:08 : There are no DML deployment required for mosip_prereg
+05/15/2024 09:23:08 : Database deployment is completed with ERRORS, Please check the logs for more information
+05/15/2024 09:23:08 : END of MOSIP database deployment
+******************************************05/15/2024 09:23:08 *****************************************************

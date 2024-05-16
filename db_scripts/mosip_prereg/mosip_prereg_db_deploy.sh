@@ -51,7 +51,9 @@ echo `date "+%m/%d/%Y %H:%M:%S"` ": Database deployment on $MOSIP_DB_NAME databa
 cd /$BASEPATH/$MOSIP_DB_NAME/
 VALUE=$(PGPASSWORD=$SU_USER_PWD  psql --username=$SU_USER --host=$DB_SERVERIP --port=$DB_PORT --dbname=$DEFAULT_DB_NAME -t -c "select count(1) from pg_roles where rolname IN('sysadmin','appadmin','dbadmin')";exit; >> $LOG 2>&1)
     echo `date "+%m/%d/%Y %H:%M:%S"` ": Checking for existing users.... Count of existing users:"$VALUE | tee -a $LOG 2>&1
+    echo ${VALUE}
 if [ ${VALUE} == 0 ]
+echo ${VALUE}
 then
     echo `date "+%m/%d/%Y %H:%M:%S"` ": Creating database users" | tee -a $LOG 2>&1
     PGPASSWORD=$SU_USER_PWD psql --username=$SU_USER --host=$DB_SERVERIP --port=$DB_PORT --dbname=$DEFAULT_DB_NAME -f $COMMON_ROLE_FILENAME -v sysadminpwd=\'$SYSADMIN_PWD\' -v dbadminpwd=\'$DBADMIN_PWD\' -v appadminpwd=\'$APPADMIN_PWD\' >> $LOG 2>&1
@@ -62,7 +64,7 @@ then
 elif [ ${VALUE} == 2 ]
 then
     echo `date "+%m/%d/%Y %H:%M:%S"` ": Creating database users" | tee -a $LOG 2>&1
-    PGPASSWORD=$SU_USER_PWD psql --username=$SU_USER --host=$DB_SERVERIP --port=$DB_PORT --dbname=$DEFAULT_DB_NAME -f $COMMON_ROLE_FILENAME -v sysadminpwd=\'$SYSADMIN_PWD\' -v dbadminpwd=\'$DBADMIN_PWD\' -v appadminpwd=\'$APPADMIN_PWD\' >> $LOG 2>&1 	
+    PGPASSWORD=$SU_USER_PWD psql --username=$SU_USER --host=$DB_SERVERIP --port=$DB_PORT --dbname=$DEFAULT_DB_NAME -f $COMMON_ROLE_FILENAME -v sysadminpwd=\'$SYSADMIN_PWD\' -v dbadminpwd=\'$DBADMIN_PWD\' -v appadminpwd=\'$APPADMIN_PWD\' >> $LOG 2>&1 	`date "+%m/%d/%Y %H:%M:%S"` ": Creating database users" | tee -a $LOG 2>&1
 else
     echo `date "+%m/%d/%Y %H:%M:%S"` ": Database users already exist" | tee -a $LOG 2>&1
 fi

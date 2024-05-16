@@ -96,6 +96,7 @@ public class OTPManager {
 		String token = "";
 		try {
 			token = generateToken();
+			System.out.println("token is " + token);
 		} catch (Exception e) {
 			logger.error(PreRegLoginConstant.SESSION_ID, this.getClass().getSimpleName(),
 					PreRegLoginErrorConstants.TOKEN_GENERATION_FAILED.getErrorCode(),
@@ -103,12 +104,12 @@ public class OTPManager {
 			throw new PreRegLoginException(PreRegLoginErrorConstants.TOKEN_GENERATION_FAILED.getErrorCode(),
 					PreRegLoginErrorConstants.TOKEN_GENERATION_FAILED.getErrorMessage());
 		}
-		String otp = generateOTP(requestDTO, token);
+		String otp = generateOTP(requestDTO, token);                                                                        // Here Where the otp generate
 		logger.info("sessionId", "idType", "id",
 				"In generateOTP method of otpmanager service OTP generated");
 		String otpHash = digestAsPlainText(
-				(userId + environment.getProperty(PreRegLoginConstant.KEY_SPLITTER) + otp).getBytes());
-
+				(userId + environment.getProperty(PreRegLoginConstant.KEY_SPLITTER) + otp).getBytes());                    // Here Where the OTP hashed with the userId
+		// Here they check if there is already a hash otp in OTP_TRANSACTION table
 		if (otpRepo.existsByOtpHashAndStatusCode(otpHash, PreRegLoginConstant.ACTIVE_STATUS)) {
 			OtpTransaction otpTxn = otpRepo.findByOtpHashAndStatusCode(otpHash, PreRegLoginConstant.ACTIVE_STATUS);
 			otpTxn.setOtpHash(otpHash);
@@ -121,7 +122,7 @@ public class OTPManager {
 		} else {
 			OtpTransaction txn = new OtpTransaction();
 			txn.setId(UUID.randomUUID().toString());
-			txn.setRefId(hash(userId));
+			txn.setRefId(hash(userId)); // Ref Id is the email or phone hashed
 			txn.setOtpHash(otpHash);
 			txn.setCrBy(environment.getProperty(PreRegLoginConstant.MOSIP_PRE_REG_CLIENTID));
 			txn.setCrDtimes(DateUtils.getUTCCurrentDateTime());
@@ -153,11 +154,14 @@ public class OTPManager {
 		if (channelType.equalsIgnoreCase(PreRegLoginConstant.EMAIL)) {
 			logger.info("sessionId", "idType", "id",
 					"In generateOTP method of otpmanager service invoking email notification");
+			System.out.println(" *********************************************************** BEFORE ****************************************");
 			notification.invokeEmailNotification(mp, userId, token, requestDTO, language);
+			System.out.println("IM HERE -------------------------------");
 		}
 		return true;
 	}
 
+	// this method where they generate a response for sendOtp endpoint and also here where the OTP generate
 	private String generateOTP(MainRequestDTO<OtpRequestDTO> requestDTO, String token) throws PreRegLoginException {
 		logger.info("sessionId", "idType", "id", "In generateOTP method of otpmanager service ");
 		try {
@@ -179,7 +183,8 @@ public class OTPManager {
 			ResponseWrapper<Map<String, String>> response = restTemplate
 					.exchange(environment.getProperty("otp-generate.rest.uri"), HttpMethod.POST, entity1,
 							ResponseWrapper.class)
-					.getBody();
+					.getBody(); // Here Where they prepare a response for sendOtp endpoint
+			System.out.println(response);
 			if (response != null && response.getResponse().get("status").equals(USER_BLOCKED)) {
 				logger.error(PreRegLoginConstant.SESSION_ID, this.getClass().getSimpleName(),
 						PreRegLoginErrorConstants.BLOCKED_OTP_VALIDATE.getErrorCode(), USER_BLOCKED);

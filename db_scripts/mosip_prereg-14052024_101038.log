@@ -1,0 +1,14 @@
+05/14/2024 10:10:38 : Postgres database server and service is up and running
+05/14/2024 10:10:38 : Started sourcing the mosip_prereg Database scripts
+05/14/2024 10:10:38 : Database scripts are sourcing from :/home/oussama/.m2/repository/pre-registration/db_scripts/
+05/14/2024 10:10:38 : Database deployment on mosip_prereg database is started....
+05/14/2024 10:10:38 : Checking for existing users.... Count of existing users: 0
+05/14/2024 10:10:38 : Database users already exist
+05/14/2024 10:10:38 : Active connections exist on the database server and active connection will be terminated for DB deployment.
+05/14/2024 10:10:38 : Prereg user already exist
+psql:mosip_prereg_db.sql:1: NOTICE:  database "mosip_prereg" does not exist, skipping
+DROP DATABASE
+psql:mosip_prereg_db.sql:8: ERROR:  role "sysadmin" does not exist
+psql:mosip_prereg_db.sql:10: WARNING:  database "mosip_prereg" does not exist
+COMMENT
+psql:mosip_prereg_db.sql:13: error: \connect: connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "sysadmin"

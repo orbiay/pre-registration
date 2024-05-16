@@ -185,6 +185,8 @@ public class LoginCommonUtil {
 	 * @param langCode
 	 * @return List<String>
 	 */
+
+	// this Where they check is it Number or Email
 	public List<String> validateUserId(String userId) {
 		log.info("In validateUserIdandLangCode method of Login Common Util");
 		List<String> list = new ArrayList<>();

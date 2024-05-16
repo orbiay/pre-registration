@@ -171,7 +171,8 @@ public class LoginService {
 			log.info("Response after loginCommonUtil {}", response);
 
 			userid = userOtpRequest.getRequest().getUserId();
-			otpChannel = loginCommonUtil.validateUserId(userid);
+			otpChannel = loginCommonUtil.validateUserId(userid); // They check the input of userid is Numner or Email
+			System.out.println(  "Otp channel is  " + otpChannel.get(0));
 			boolean otpSent = otpmanager.sendOtp(userOtpRequest, otpChannel.get(0), language);
 			AuthNResponse authNResponse = null;
 			if (otpSent) {

@@ -84,7 +84,7 @@ public class AvailabilityUtil {
 	@Value("${mosip.preregistration.booking.availability.sync.id}")
 	String idUrlSync;
 
-	@Value("${mosip.primary-language}")
+		@Value("${mosip.primary-language}")
 	String primaryLang;
 
 	@Value("${notification.url}")

@@ -192,10 +192,17 @@ public class NotificationServiceUtil {
 	public void invokeEmailNotification(Map values, String userId, String token,
 			MainRequestDTO<OtpRequestDTO> requestDTO, String langCode) throws PreRegLoginException, IOException {
 		log.info("sessionId", "idType", "id", "In invokeEmailNotification method of notification service util");
+		System.out.println("HELLO FROM invokeEmailNotification");
 		String otpContentTemaplate = environment.getProperty(PreRegLoginConstant.OTP_CONTENT_TEMPLATE);
 		String otpSubjectTemplate = environment.getProperty(PreRegLoginConstant.OTP_SUBJECT_TEMPLATE);
-		String mailSubject = applyTemplate(values, otpSubjectTemplate, token, langCode);
+		System.out.println("HELLO FROM invokeEmailNotification 2 ");
+		System.out.println(" ------------------> otpContentTemaplate" + otpContentTemaplate);
+		System.out.println(" ------------------> Map is \n" + values);
+		String mailSubject = applyTemplate(values, otpSubjectTemplate, token, langCode); // Last thing
+		System.out.println(" ------------------> mailSubject" + mailSubject);
 		String mailContent = applyTemplate(values, otpContentTemaplate, token, langCode);
+		System.out.println(" ------------------> mailSubject" + mailSubject);
+		System.out.println(" ------------------> mailContent" + mailContent);
 		sendEmailNotification(userId, mailSubject, mailContent, token, requestDTO);
 	}
 
@@ -308,6 +315,7 @@ public class NotificationServiceUtil {
 		templateValue = templateManager
 				.merge(new ByteArrayInputStream(fetchedTemplate.getBytes(StandardCharsets.UTF_8)), mp);
 		if (templateValue == null) {
+			System.out.println("-------------------->  A message Thrown");
 			throw new PreRegLoginException(PreRegLoginErrorConstants.MISSING_INPUT_PARAMETER.getErrorCode(),
 					String.format(PreRegLoginErrorConstants.MISSING_INPUT_PARAMETER.getErrorMessage(), "TEMPLATE"));
 		}
@@ -339,7 +347,7 @@ public class NotificationServiceUtil {
 		String url = UriComponentsBuilder
 				.fromUriString(environment.getProperty("id-masterdata-template-service-multilang.rest.uri"))
 				.buildAndExpand(params).toString();
-
+	System.out.println(environment.getProperty("id-masterdata-template-service-multilang.rest.uri"));
 		Map<String, Object> response = restTemplate.exchange(url, HttpMethod.GET, entity1, Map.class, templateName)
 				.getBody();
 

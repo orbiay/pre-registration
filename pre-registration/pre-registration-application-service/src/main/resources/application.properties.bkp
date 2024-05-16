@@ -1,10 +1,10 @@
-spring.cloud.config.uri=https://dev.mosip.net/config
-spring.cloud.config.label=develop
+spring.cloud.config.uri=http://localhost:51000/config
+spring.cloud.config.label=1.1.5_v3
 spring.cloud.config.name=pre-registration
 spring.application.name=pre-registration-application-service
-spring.profiles.active=mz
+spring.profiles.active=default
 management.endpoint.health.show-details=always
-management.endpoints.web.exposure.include=info,health,refresh
+#management.endpoints.web.exposure.include=info,health,refresh
 
 server.servlet.context-path=/preregistration/v1
 
@@ -21,14 +21,14 @@ mosip.preregistration.demographic.id.create=mosip.pre-registration.demographic.c
 mosip.preregistration.demographic.id.update=mosip.pre-registration.demographic.update
 mosip.preregistration.demographic.id.retrieve.date=mosip.pre-registration.demographic.retrieve.date
 appId: prereg
-mosip.base.url=https://dev.mosip.net
+mosip.base.url=https://uat2.mosip.net
 application.id: pre-registration
 appointmentResourse.url: ${mosip.base.url}/preregistration/v1
 audit.service.contextpath: auditmanager
 audit.service.env: http://kernel-auditmanager-service
 audit.url: ${mosip.base.url}/v1/auditmanager/audits
 auth-token-generator.rest.issuerUrl:${mosip.base.url}/keycloak/auth/realms/preregistration
-auth.server.admin.validate.url:https://dev.mosip.net/v1/authmanager/authorize/admin/validateToken
+auth.server.admin.validate.url=https://uat2.mosip.net/v1/authmanager/authorize/admin/validateToken
 auth.server.validate.url: ${mosip.base.url}/v1/authmanager/authorize/admin/validateToken
 batch.appointment.cancel: ${mosip.base.url}/preregistration/v1
 batch.resource.url: ${mosip.base.url}/preregistration/v1/batch
@@ -71,8 +71,8 @@ hibernate.show_sql: false
 holiday.exceptional.url: ${mosip.base.url}/v1/masterdata/exceptionalholidays
 holiday.url: ${mosip.base.url}/v1/masterdata/getregistrationcenterholidays/
 javax.persistence.jdbc.driver: org.postgresql.Driver
-javax.persistence.jdbc.password: mosip123
-javax.persistence.jdbc.url=jdbc:postgresql://dev.mosip.net:30090/mosip_prereg
+javax.persistence.jdbc.password:mosip123
+javax.persistence.jdbc.url=jdbc:postgresql://uat2.mosip.net:30090/mosip_prereg
 javax.persistence.jdbc.user: postgres
 kernel.auth.contextpath: authmanager
 kernel.auth.env: ${mosip.base.url}
@@ -401,10 +401,10 @@ prereg.auth.jwt.secret=Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=
 prereg.auth.jwt.token.expiration=1800
 prereg.auth.jwt.token.roles=INDIVIDUAL
 
-mosip.mandatory-languages=ara,eng
-mosip.optional-languages=fra,ara
+mosip.mandatory-languages=eng
+mosip.optional-languages=
 mosip.min-languages.count=1
-mosip.max-languages.count=6abc
+mosip.max-languages.count=1
 preregistration.crypto.referenceId=INDIVIDUAL
 preregistration.crypto.PrependThumbprint=false
 preregistration.crypto.applicationId=PRE_REGISTRATION
@@ -418,3 +418,11 @@ prereg.auth.jwt.scope = "PRE-REGISTRATION";
 mosip.preregistration.captcha.resourse.url=${mosip.base.url}/preregistration/v1/captcha/validatecaptcha
 
 mosip.preregistration.sendotp.allowapi=false
+
+
+otp-generate.rest.uri=${mosip.base.url}/v1/otpmanager/otp/generate
+pre.reg.login.otp.sms.template=pre-reg-login-otp-sms-template
+pre.reg.login.otp.mail.subject.template=OTP-email-subject-template
+pre.reg.login.otp.mail.content.template=OTP-email-content-template
+mosip.pre.reg.clientId=mosip.pre.reg.clientId
+#id-masterdata-template-service-multilang.rest.uri=${mosip.base.url}/v1/masterdata/templates/{langcode}/{templatetypecode}

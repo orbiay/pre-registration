@@ -3,7 +3,8 @@ spring.profiles.active=local
 management.endpoint.health.show-details=always
 management.endpoints.web.exposure.include=info,health,refresh
 
-
+spring.cloud.config.uri=https://uat2.mosip.net/config
+spring.cloud.config.label=uat2-1155
 
 #server.port=9092
 
